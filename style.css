@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
-
 body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
 /* Scrollbar */
@@ -27,3 +26,61 @@ body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
 /* Accordion Logic */
 .dim-group-content { max-height: 2000px; overflow: hidden; transition: max-height 0.6s ease-in-out, opacity 0.4s; opacity: 1; }
 .dim-group-content.collapsed { max-height: 0; opacity: 0; pointer-events: none; }
+
+/* ---------- Weight-tier visual encoding on each dimension row ---------- */
+.dim-item-container {
+    border-left: 4px solid transparent;
+    transition: background 0.2s, border-color 0.2s;
+    padding-left: 10px !important;
+}
+.dim-item-container.prio-core      { border-left-color: #ef4444; background: rgba(239, 68, 68, 0.06); }
+.dim-item-container.prio-high      { border-left-color: #fb923c; background: rgba(251, 146, 60, 0.05); }
+.dim-item-container.prio-medium    { border-left-color: #60a5fa; background: rgba(96, 165, 250, 0.04); }
+.dim-item-container.prio-low       { border-left-color: #475569; }
+.dim-item-container.prio-core:hover   { background: rgba(239, 68, 68, 0.12); }
+.dim-item-container.prio-high:hover   { background: rgba(251, 146, 60, 0.11); }
+.dim-item-container.prio-medium:hover { background: rgba(96, 165, 250, 0.10); }
+.dim-item-container.prio-low:hover    { background: rgba(148, 163, 184, 0.08); }
+
+/* Weight percentage badge */
+.weight-badge {
+    display: inline-block;
+    min-width: 38px; text-align: center;
+    padding: 1px 6px; margin-left: 6px;
+    border-radius: 999px;
+    font-size: 9px; font-weight: 900; letter-spacing: 0.04em;
+    background: rgba(99, 102, 241, 0.12); color: #a5b4fc;
+    border: 1px solid rgba(99, 102, 241, 0.25);
+}
+.dim-item-container.prio-core   .weight-badge { background: rgba(239, 68, 68, 0.15);  color: #fca5a5; border-color: rgba(239, 68, 68, 0.35); }
+.dim-item-container.prio-high   .weight-badge { background: rgba(251, 146, 60, 0.15); color: #fdba74; border-color: rgba(251, 146, 60, 0.35); }
+.dim-item-container.prio-medium .weight-badge { background: rgba(96, 165, 250, 0.15); color: #93c5fd; border-color: rgba(96, 165, 250, 0.35); }
+.dim-item-container.prio-low    .weight-badge { background: rgba(100, 116, 139, 0.15); color: #94a3b8; border-color: rgba(100, 116, 139, 0.35); }
+
+/* Priority dot */
+.priority-dot { flex-shrink: 0; }
+.hide-priorities .priority-dot,
+.hide-priorities .weight-badge,
+.hide-priorities .dim-item-container { border-left-color: transparent !important; background: transparent !important; }
+.hide-priorities .priority-dot,
+.hide-priorities .weight-badge { display: none !important; }
+
+/* Copy button feedback */
+.copy-btn.copied { background: #10b981 !important; color: #fff !important; }
+
+/* Toast */
+#toast.show { opacity: 1 !important; }
+
+/* Emphasis badge (Single Focus) */
+.emphasis-badge {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white;
+    font-weight: 900; padding: 2px 10px; border-radius: 999px;
+    font-size: 9px; letter-spacing: 0.08em;
+}
+
+/* Fallback warning when renderer fails */
+.render-error {
+    padding: 16px; border: 1px dashed #ef4444; border-radius: 16px;
+    background: rgba(239, 68, 68, 0.08); color: #fca5a5;
+    font-size: 11px; font-weight: 600;
+}

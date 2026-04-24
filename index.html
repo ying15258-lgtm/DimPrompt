@@ -11,26 +11,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0b0f1a] text-slate-800 dark:text-slate-200 antialiased min-h-screen">
-
     <header class="w-full bg-white/80 dark:bg-[#0b0f1a]/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-8 py-4 flex justify-between items-center sticky top-0 z-50">
         <div class="flex items-center gap-4">
             <h1 class="text-xl font-black tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-violet-400" data-i18n="app_title">DimPrompt</h1>
-            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 uppercase tracking-widest">PRO</span>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-indigo-500/10 text-indigo-500 dark:text-indigo-400 border border-indigo-500/20 uppercase tracking-widest">PRO</span>
         </div>
-        
         <div class="flex items-center gap-6">
             <div id="header-legend" class="hidden lg:flex text-[10px] uppercase font-black tracking-widest text-slate-500 items-center gap-4">
                 <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-red-500 shadow-[0_0_8px_red]"></span> <span data-i18n="leg_core">Core</span></span>
                 <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-orange-400"></span> <span data-i18n="leg_high">High</span></span>
                 <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-blue-400"></span> <span data-i18n="leg_med">Med</span></span>
-                <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-slate-600"></span> <span data-i18n="leg_low">Low</span></span>
+                <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-slate-400 dark:bg-slate-600"></span> <span data-i18n="leg_low">Low</span></span>
             </div>
-            
-            <div class="flex items-center gap-3 border-l border-slate-800 pl-6">
-                <button onclick="toggleDarkMode()" class="p-2 text-slate-400 hover:text-indigo-400 transition-all bg-slate-800/50 rounded-xl">
+            <div class="flex items-center gap-3 border-l border-slate-200 dark:border-slate-800 pl-6">
+                <button onclick="toggleDarkMode()" class="p-2 text-slate-500 dark:text-slate-400 hover:text-indigo-500 dark:hover:text-indigo-400 transition-all bg-slate-100 dark:bg-slate-800/50 rounded-xl">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" stroke-width="2"></path></svg>
                 </button>
-                <select id="lang-switch" onchange="changeLanguage()" class="text-xs font-black bg-slate-800 border border-slate-700 text-slate-300 rounded-xl px-2 py-1.5 outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all cursor-pointer">
+                <select id="lang-switch" onchange="changeLanguage()" class="text-xs font-black bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-xl px-2 py-1.5 outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all cursor-pointer">
                     <option value="en" selected>EN</option>
                     <option value="zh">中文</option>
                     <option value="ko">한글</option>
@@ -38,122 +35,103 @@
             </div>
         </div>
     </header>
-
     <main class="max-w-[1600px] mx-auto p-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        
         <aside class="lg:col-span-5 space-y-6 h-[calc(100vh-120px)] overflow-y-auto custom-scrollbar pr-2 pb-10">
-            
             <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-sm space-y-6">
                 <div class="flex justify-between items-center">
                     <h2 class="text-[11px] font-black uppercase tracking-[0.2em] text-slate-500" data-i18n="tit_config">Configuration</h2>
-                    <button onclick="resetAll()" class="text-[10px] font-black text-red-400 bg-red-400/5 px-3 py-1 rounded-full border border-red-400/20 hover:bg-red-400/10 transition-all" data-i18n="btn_reset">RESET</button>
+                    <button onclick="resetAll()" class="text-[10px] font-black text-red-500 dark:text-red-400 bg-red-50 dark:bg-red-400/5 px-3 py-1 rounded-full border border-red-200 dark:border-red-400/20 hover:bg-red-100 dark:hover:bg-red-400/10 transition-all" data-i18n="btn_reset">RESET</button>
                 </div>
-
                 <div class="grid grid-cols-2 gap-4">
                     <div class="space-y-2">
-                        <label class="text-[10px] font-black text-slate-600 uppercase" data-i18n="lbl_mode">Mode Selection</label>
-                        <select id="system-mode" onchange="toggleMode()" class="w-full bg-slate-50 dark:bg-slate-800 border-none text-xs font-bold rounded-2xl px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500/50">
+                        <label class="text-[10px] font-black text-slate-500 dark:text-slate-600 uppercase" data-i18n="lbl_mode">Mode Selection</label>
+                        <select id="system-mode" onchange="toggleMode()" class="w-full bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-transparent text-xs font-bold rounded-2xl px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500/50">
                             <option value="recommend" data-i18n="opt_rec">Research Recommendation</option>
                             <option value="free" data-i18n="opt_free">Free Combination</option>
                         </select>
                     </div>
                     <div class="space-y-2">
-                        <label class="text-[10px] font-black text-slate-600 uppercase" data-i18n="lbl_prod">Product Type</label>
-                        <select id="product-type" class="w-full bg-slate-50 dark:bg-slate-800 border-none text-xs font-bold rounded-2xl px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500/50">
-                            <optgroup label="Office Supplies" data-i18n-label="grp_sup">
-                                <option value="Office Mouse" selected>Office Mouse</option>
-                                <option value="Office Keyboard">Keyboard</option>
-                                <option value="File Box">File Box</option>
-                                <option value="Organizer">Organizer</option>
-                                <option value="Stationery Storage">Stationery</option>
-                            </optgroup>
-                            <optgroup label="Equipment" data-i18n-label="grp_equ">
-                                <option value="Printer">Printer</option>
-                                <option value="Monitor">Monitor</option>
-                                <option value="Scanner">Scanner</option>
-                                <option value="Projector">Projector</option>
-                                <option value="Label Printer">Label Printer</option>
-                            </optgroup>
-                            <optgroup label="Furniture" data-i18n-label="grp_fur">
-                                <option value="Office Desk">Desk</option>
-                                <option value="Office Chair">Chair</option>
-                                <option value="Standing Desk">Standing Desk</option>
-                                <option value="File Cabinet">File Cabinet</option>
-                                <option value="Bookshelf">Bookshelf</option>
-                            </optgroup>
-                        </select>
+                        <label class="text-[10px] font-black text-slate-500 dark:text-slate-600 uppercase" data-i18n="lbl_prod">Product Type</label>
+                        <input type="text" id="product-search" oninput="filterProducts()" autocomplete="off"
+                               class="w-full bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-transparent text-xs font-bold rounded-2xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-indigo-500/50 placeholder:text-slate-400 dark:placeholder:text-slate-500"
+                               data-i18n-placeholder="pl_prod_search" placeholder="Search products...">
+                        <select id="product-type" class="w-full bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-transparent text-xs font-bold rounded-2xl px-3 py-2.5 outline-none focus:ring-2 focus:ring-indigo-500/50"></select>
                     </div>
                 </div>
-
                 <div class="space-y-3">
-                    <label class="text-[10px] font-black text-slate-600 uppercase" data-i18n="lbl_comp">Composition Mode</label>
+                    <div class="flex justify-between items-center">
+                        <label class="text-[10px] font-black text-slate-500 dark:text-slate-600 uppercase" data-i18n="lbl_comp">Composition Mode</label>
+                        <div id="topk-wrap" class="hidden items-center gap-2">
+                            <span class="text-[9px] font-black text-slate-500 uppercase">K</span>
+                            <input id="topk-input" type="number" min="1" max="18" value="5"
+                                   class="w-14 bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-[11px] font-black rounded-lg px-2 py-1 outline-none focus:ring-1 focus:ring-indigo-500 text-center text-slate-800 dark:text-slate-100">
+                        </div>
+                    </div>
                     <div class="grid grid-cols-2 gap-2">
                         <label class="flex items-center gap-3 cursor-pointer bg-slate-50 dark:bg-slate-800 p-3 rounded-2xl border border-transparent hover:border-indigo-500/50 transition-all">
                             <input type="radio" name="composition-mode" value="Default (Implicit)" checked class="accent-indigo-500 w-4 h-4">
-                            <span class="text-xs font-bold text-slate-500" data-i18n="comp_def">Default</span>
+                            <span class="text-xs font-bold text-slate-700 dark:text-slate-400" data-i18n="comp_def">Default</span>
                         </label>
                         <label class="flex items-center gap-3 cursor-pointer bg-slate-50 dark:bg-slate-800 p-3 rounded-2xl border border-transparent hover:border-indigo-500/50 transition-all">
                             <input type="radio" name="composition-mode" value="Top-K Priority" class="accent-indigo-500 w-4 h-4">
-                            <span class="text-xs font-bold text-slate-500" data-i18n="comp_top">Top-5 Priority</span>
+                            <span class="text-xs font-bold text-slate-700 dark:text-slate-400" data-i18n="comp_top">Top-K Priority</span>
                         </label>
                         <label class="flex items-center gap-3 cursor-pointer bg-slate-50 dark:bg-slate-800 p-3 rounded-2xl border border-transparent hover:border-indigo-500/50 transition-all">
                             <input type="radio" name="composition-mode" value="Single-Dimension Emphasis" class="accent-indigo-500 w-4 h-4">
-                            <span class="text-xs font-bold text-slate-500" data-i18n="comp_sin">Single Focus</span>
+                            <span class="text-xs font-bold text-slate-700 dark:text-slate-400" data-i18n="comp_sin">Single Focus</span>
                         </label>
                         <label class="flex items-center gap-3 cursor-pointer bg-slate-50 dark:bg-slate-800 p-3 rounded-2xl border border-transparent hover:border-indigo-500/50 transition-all">
                             <input type="radio" name="composition-mode" value="Multi-Dimension Balance" class="accent-indigo-500 w-4 h-4">
-                            <span class="text-xs font-bold text-slate-500" data-i18n="comp_mul">Balance</span>
+                            <span class="text-xs font-bold text-slate-700 dark:text-slate-400" data-i18n="comp_mul">Balance</span>
                         </label>
                     </div>
                 </div>
             </div>
-
             <div class="space-y-4">
                 <div class="flex justify-between items-center px-2">
                     <h2 class="text-[11px] font-black uppercase tracking-[0.2em] text-slate-500" data-i18n="lbl_dim">Design Dimensions</h2>
-                    <input type="text" id="dim-search" onkeyup="filterDimensions()" class="bg-slate-900 border border-slate-800 text-[10px] rounded-full px-4 py-1.5 outline-none focus:border-indigo-500 w-40" data-i18n-placeholder="pl_search" placeholder="Search...">
+                    <input type="text" id="dim-search" onkeyup="filterDimensions()" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 text-[10px] rounded-full px-4 py-1.5 outline-none focus:border-indigo-500 w-40" data-i18n-placeholder="pl_search" placeholder="Search...">
                 </div>
-                <div id="dimensions-container" class="space-y-3"></div>
+                <div id="dimensions-container" class="space-y-3">
+                    <noscript><div class="p-4 text-xs text-red-400">JavaScript is required to render the dimension picker.</div></noscript>
+                </div>
             </div>
-
             <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 space-y-4 shadow-sm">
                 <label class="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]" data-i18n="lbl_const">Supplementary Constraints</label>
-                <textarea id="const-all" class="w-full bg-slate-50 dark:bg-[#0b0f1a] border border-slate-200 dark:border-slate-800 rounded-2xl p-4 text-xs outline-none focus:border-indigo-500 transition-all" rows="3" data-i18n-placeholder="pl_user" placeholder="Enter constraints (User, Engineering, Market, Style)..."></textarea>
+                <textarea id="const-all" class="w-full bg-slate-50 dark:bg-[#0b0f1a] border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 rounded-2xl p-4 text-xs outline-none focus:border-indigo-500 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600" rows="3" data-i18n-placeholder="pl_user" placeholder="Enter constraints (User, Engineering, Market, Style)..."></textarea>
             </div>
-
-            <div class="bg-slate-100/50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 space-y-5">
+            <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 space-y-5 shadow-sm">
                 <div class="grid grid-cols-4 gap-3">
                     <div class="space-y-1">
-                        <span class="text-[8px] font-black text-slate-600 uppercase">Version</span>
-                        <select id="param-v" class="w-full bg-white dark:bg-slate-800 border-none text-[10px] font-bold rounded-xl px-1 py-2 outline-none focus:ring-1 focus:ring-indigo-500">
+                        <span class="text-[8px] font-black text-slate-500 dark:text-slate-600 uppercase">Version</span>
+                        <select id="param-v" class="w-full bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-transparent text-[10px] font-bold rounded-xl px-1 py-2 outline-none focus:ring-1 focus:ring-indigo-500">
                             <option value="6.1">6.1</option><option value="6.0">6.0</option><option value="5.2">5.2</option>
                         </select>
                     </div>
                     <div class="space-y-1">
-                        <span class="text-[8px] font-black text-slate-600 uppercase">Ratio</span>
-                        <select id="param-ar" class="w-full bg-white dark:bg-slate-800 border-none text-[10px] font-bold rounded-xl px-1 py-2 outline-none focus:ring-1 focus:ring-indigo-500">
+                        <span class="text-[8px] font-black text-slate-500 dark:text-slate-600 uppercase">Ratio</span>
+                        <select id="param-ar" class="w-full bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-transparent text-[10px] font-bold rounded-xl px-1 py-2 outline-none focus:ring-1 focus:ring-indigo-500">
                             <option value="4:3">4:3</option><option value="16:9">16:9</option><option value="1:1">1:1</option>
                         </select>
                     </div>
                     <div class="space-y-1">
-                        <span class="text-[8px] font-black text-slate-600 uppercase">Stylize</span>
-                        <select id="param-s" class="w-full bg-white dark:bg-slate-800 border-none text-[10px] font-bold rounded-xl px-1 py-2 outline-none focus:ring-1 focus:ring-indigo-500">
+                        <span class="text-[8px] font-black text-slate-500 dark:text-slate-600 uppercase">Stylize</span>
+                        <select id="param-s" class="w-full bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-transparent text-[10px] font-bold rounded-xl px-1 py-2 outline-none focus:ring-1 focus:ring-indigo-500">
                             <option value="15" selected>15</option><option value="50">50</option><option value="250">250</option>
                         </select>
                     </div>
                     <div class="space-y-1">
-                        <span class="text-[8px] font-black text-slate-600 uppercase">Qual</span>
-                        <select id="param-q" class="w-full bg-white dark:bg-slate-800 border-none text-[10px] font-bold rounded-xl px-1 py-2 outline-none focus:ring-1 focus:ring-indigo-500">
+                        <span class="text-[8px] font-black text-slate-500 dark:text-slate-600 uppercase">Qual</span>
+                        <select id="param-q" class="w-full bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-transparent text-[10px] font-bold rounded-xl px-1 py-2 outline-none focus:ring-1 focus:ring-indigo-500">
                             <option value="1" selected>1</option><option value="2">2</option>
                         </select>
                     </div>
                 </div>
                 <div class="flex items-center gap-4">
-                    <input type="text" id="param-no" class="flex-1 bg-white dark:bg-slate-800 border-none text-xs font-bold rounded-xl px-4 py-2 outline-none" data-i18n-placeholder="pl_no" placeholder="Exclude words...">
-                    <label class="flex items-center gap-2 cursor-pointer shrink-0"><input type="checkbox" id="param-raw" class="accent-indigo-500"><span class="text-[9px] font-black">RAW</span></label>
+                    <input type="text" id="param-no" class="flex-1 bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 border-none text-xs font-bold rounded-xl px-4 py-2 outline-none placeholder:text-slate-400 dark:placeholder:text-slate-500" data-i18n-placeholder="pl_no" placeholder="Exclude words...">
+                    <label class="flex items-center gap-2 cursor-pointer shrink-0"><input type="checkbox" id="param-raw" class="accent-indigo-500"><span class="text-[9px] font-black text-slate-700 dark:text-slate-300">RAW</span></label>
                 </div>
             </div>
-
             <div class="bg-indigo-600 rounded-[2.5rem] p-8 shadow-2xl relative overflow-hidden group">
                 <div class="relative z-10 flex items-center gap-8">
                     <div class="w-32 h-32 bg-black/20 rounded-2xl p-2"><canvas id="radarChart"></canvas></div>
@@ -164,47 +142,52 @@
                 </div>
             </div>
         </aside>
-
-        <main class="lg:col-span-7 space-y-8 h-[calc(100vh-120px)] overflow-y-auto custom-scrollbar pb-32">
+        <section class="lg:col-span-7 space-y-8 h-[calc(100vh-120px)] overflow-y-auto custom-scrollbar pb-32">
             <div id="initial-placeholder" class="h-full flex flex-col items-center justify-center opacity-40">
-                <svg class="w-16 h-16 text-slate-700 mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-width="2"></path></svg>
-                <h3 class="text-2xl font-black italic text-slate-700 uppercase" data-i18n="txt_empty_tit">Ready to Build</h3>
+                <svg class="w-16 h-16 text-slate-400 dark:text-slate-700 mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-width="2"></path></svg>
+                <h3 class="text-2xl font-black italic text-slate-400 dark:text-slate-700 uppercase" data-i18n="txt_empty_tit">Ready to Build</h3>
             </div>
-            
             <div id="skeleton-loader" class="hidden space-y-6">
-                <div class="bg-slate-900 border border-slate-800 rounded-[2rem] p-10 animate-pulse">
-                    <div class="h-8 bg-slate-800 rounded-lg w-1/4 mb-6"></div>
-                    <div class="h-40 bg-slate-800/40 rounded-3xl"></div>
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-[2rem] p-10 animate-pulse">
+                    <div class="h-8 bg-slate-200 dark:bg-slate-800 rounded-lg w-1/4 mb-6"></div>
+                    <div class="h-40 bg-slate-100 dark:bg-slate-800/40 rounded-3xl"></div>
                 </div>
             </div>
-
             <div id="results-container" class="space-y-8 hidden"></div>
-            
-            <div id="history-section" class="mt-20 pt-10 border-t border-slate-800 hidden">
-                <div class="flex justify-between items-center mb-10 px-4">
-                    <h2 class="text-3xl font-[900] italic text-slate-800 uppercase" data-i18n="tit_hist">HISTORY</h2>
-                    <label class="flex items-center gap-3 cursor-pointer bg-slate-900 border border-slate-800 px-5 py-2.5 rounded-2xl">
-                        <input type="checkbox" id="filter-prefer" onchange="renderVersionHistory()" class="w-4 h-4 accent-indigo-500">
-                        <span class="text-[10px] font-black text-slate-500 uppercase tracking-widest" data-i18n="txt_filter">Prefer Only</span>
-                    </label>
+            <div id="history-section" class="mt-20 pt-10 border-t border-slate-200 dark:border-slate-800 hidden">
+                <div class="flex justify-between items-center mb-10 px-4 flex-wrap gap-3">
+                    <h2 class="text-3xl font-[900] italic text-slate-800 dark:text-slate-200 uppercase" data-i18n="tit_hist">HISTORY</h2>
+                    <div class="flex items-center gap-3 flex-wrap">
+                        <label class="flex items-center gap-3 cursor-pointer bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-5 py-2.5 rounded-2xl">
+                            <input type="checkbox" id="filter-prefer" onchange="renderVersionHistory()" class="w-4 h-4 accent-indigo-500">
+                            <span class="text-[10px] font-black text-slate-500 uppercase tracking-widest" data-i18n="txt_filter">Prefer Only</span>
+                        </label>
+                        <button onclick="downloadExportWord()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-5 py-2.5 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all" data-i18n="btn_exp_word">Export Word</button>
+                        <button onclick="downloadExportTXT()" class="bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 px-5 py-2.5 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all" data-i18n="btn_exp_txt">Export TXT</button>
+                        <button onclick="exportCurrentVersion()" class="bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 px-5 py-2.5 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all" data-i18n="btn_exp">Preview</button>
+                        <button onclick="exportHistoryJSON()" class="bg-slate-100 dark:bg-slate-800/60 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700 px-5 py-2.5 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all" data-i18n="btn_exp_json">Research JSON</button>
+                        <button onclick="clearHistory()" class="bg-red-50 dark:bg-red-500/10 text-red-500 dark:text-red-400 border border-red-200 dark:border-red-500/30 px-5 py-2.5 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-red-100 dark:hover:bg-red-500/20 transition-all" data-i18n="btn_clear_hist">Clear</button>
+                    </div>
                 </div>
                 <div id="history-container" class="space-y-8"></div>
             </div>
-        </main>
+        </section>
     </main>
-
-    <div id="export-modal" class="fixed inset-0 bg-black/95 backdrop-blur-2xl flex items-center justify-center z-[100] hidden opacity-0 transition-all duration-500">
-        <div class="bg-slate-950 border border-slate-800 rounded-[3rem] w-[800px] max-w-[95vw] p-10 shadow-2xl">
+    <div id="export-modal" class="fixed inset-0 bg-black/70 dark:bg-black/90 backdrop-blur-2xl flex items-center justify-center z-[100] hidden opacity-0 transition-all duration-500">
+        <div class="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-[3rem] w-[800px] max-w-[95vw] p-10 shadow-2xl">
             <h3 class="text-4xl font-black italic tracking-tighter text-indigo-500 mb-6" data-i18n="tit_exp">EXPORT</h3>
-            <textarea id="export-textarea" class="w-full h-[350px] bg-black border border-slate-800 rounded-3xl p-6 font-mono text-xs text-indigo-400 outline-none leading-relaxed" readonly></textarea>
-            <div class="flex justify-end gap-4 mt-8">
-                <button onclick="closeExportModal()" class="text-slate-500 font-black uppercase text-xs px-8 py-4" data-i18n="btn_close">Close</button>
-                <button onclick="downloadExportText()" class="bg-slate-800 text-white px-8 py-4 rounded-[2rem] text-sm font-black uppercase tracking-widest shadow-lg hover:bg-slate-700 transition-all" data-i18n="btn_download">DOWNLOAD WORD</button>
-                <button onclick="copyExportText(this)" class="bg-indigo-600 text-white px-12 py-4 rounded-[2rem] text-sm font-black uppercase tracking-widest shadow-2xl hover:bg-indigo-500 transition-all" data-i18n="btn_copy_txt">COPY DATA</button>
+            <textarea id="export-textarea" class="w-full h-[350px] bg-slate-50 dark:bg-black border border-slate-200 dark:border-slate-800 rounded-3xl p-6 font-mono text-xs text-indigo-700 dark:text-indigo-400 outline-none leading-relaxed" readonly></textarea>
+            <div class="flex justify-end gap-4 mt-8 flex-wrap">
+                <button onclick="closeExportModal()" class="text-slate-500 dark:text-slate-400 font-black uppercase text-xs px-8 py-4" data-i18n="btn_close">Close</button>
+                <button onclick="exportHistoryJSON()" class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 px-6 py-4 rounded-[2rem] text-sm font-black uppercase tracking-widest hover:bg-slate-200 dark:hover:bg-slate-700 transition-all" data-i18n="btn_exp_json">Research JSON</button>
+                <button onclick="downloadExportTXT()" class="bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-white px-8 py-4 rounded-[2rem] text-sm font-black uppercase tracking-widest shadow-lg hover:bg-slate-300 dark:hover:bg-slate-700 transition-all" data-i18n="btn_exp_txt">Export TXT</button>
+                <button onclick="downloadExportWord()" class="bg-indigo-600 text-white px-10 py-4 rounded-[2rem] text-sm font-black uppercase tracking-widest shadow-2xl hover:bg-indigo-500 transition-all" data-i18n="btn_download">Download Word</button>
+                <button onclick="copyExportText(this)" class="bg-violet-600 text-white px-6 py-4 rounded-[2rem] text-sm font-black uppercase tracking-widest shadow-2xl hover:bg-violet-500 transition-all" data-i18n="btn_copy_txt">COPY</button>
             </div>
         </div>
     </div>
-
+    <div id="toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 bg-slate-900 border border-indigo-500/50 text-indigo-200 text-xs font-black uppercase tracking-widest px-6 py-3 rounded-full shadow-2xl opacity-0 pointer-events-none transition-opacity duration-300 z-[200]"></div>
+    <div id="dim-tooltip" role="tooltip" aria-hidden="true"></div>
     <script src="script.js"></script>
 </body>
 </html>
