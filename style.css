@@ -1,86 +1,109 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+
 body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-/* Scrollbar */
+/* ── Scrollbar ── */
 .custom-scrollbar::-webkit-scrollbar { width: 3px; }
 .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
 .custom-scrollbar::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
 
-/* Result Card Styling */
+/* ── Result Card ── */
 .result-card {
-    background: #111827; border: 1px solid #1f2937; border-radius: 2.5rem;
-    padding: 2.5rem; transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    background: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 2.5rem;
+    padding: 2.5rem;
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
-.result-card:hover { transform: translateY(-8px); box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.6); border-color: #374151; }
+.result-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.6);
+    border-color: #374151;
+}
 
-/* Evaluation Active Colors */
-.eval-btn.active-prefer { background: #10b981 !important; color: white !important; font-weight: 900; box-shadow: 0 8px 16px rgba(16, 185, 129, 0.3); }
+/* C: Prompt text — larger, better line-height, brighter in dark mode */
+.prompt-text {
+    font-size: 15px;
+    line-height: 1.85;
+    color: #c7d2fe;          /* indigo-200, brighter than indigo-300 */
+}
+
+/* C: History prompt text — larger & brighter */
+.history-prompt-text {
+    font-size: 12px;
+    line-height: 1.75;
+    color: #94a3b8;          /* slate-400, up from slate-500 */
+    font-family: 'Courier New', Courier, monospace;
+    word-break: break-all;
+}
+
+/* ── Evaluation Active Colors ── */
+.eval-btn.active-prefer  { background: #10b981 !important; color: white !important; font-weight: 900; box-shadow: 0 8px 16px rgba(16, 185, 129, 0.3); }
 .eval-btn.active-neutral { background: #64748b !important; color: white !important; font-weight: 900; }
 .eval-btn.active-discard { background: #ef4444 !important; color: white !important; font-weight: 900; box-shadow: 0 8px 16px rgba(239, 68, 68, 0.3); }
 
-/* Bilingual Text Stylization */
+/* ── Bilingual text ── */
 .lang-main { font-weight: 700; }
-.lang-sub { font-size: 0.85em; color: #475569; font-weight: 500; margin-left: 4px; opacity: 0.8; }
+.lang-sub  { font-size: 0.85em; color: #475569; font-weight: 500; margin-left: 4px; opacity: 0.8; }
 
-/* Accordion Logic */
+/* ── Accordion ── */
 .dim-group-content { max-height: 2000px; overflow: hidden; transition: max-height 0.6s ease-in-out, opacity 0.4s; opacity: 1; }
 .dim-group-content.collapsed { max-height: 0; opacity: 0; pointer-events: none; }
 
-/* ---------- Weight-tier visual encoding on each dimension row ---------- */
-.dim-item-container {
-    border-left: 4px solid transparent;
-    transition: background 0.2s, border-color 0.2s;
-    padding-left: 10px !important;
+/* ── A: Dimension tooltip ── */
+.dim-tooltip {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 0.875rem;
+    padding: 0.75rem 0.875rem;
+    max-width: 270px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(99,102,241,0.15);
+    pointer-events: none;
 }
-.dim-item-container.prio-core      { border-left-color: #ef4444; background: rgba(239, 68, 68, 0.06); }
-.dim-item-container.prio-high      { border-left-color: #fb923c; background: rgba(251, 146, 60, 0.05); }
-.dim-item-container.prio-medium    { border-left-color: #60a5fa; background: rgba(96, 165, 250, 0.04); }
-.dim-item-container.prio-low       { border-left-color: #475569; }
-.dim-item-container.prio-core:hover   { background: rgba(239, 68, 68, 0.12); }
-.dim-item-container.prio-high:hover   { background: rgba(251, 146, 60, 0.11); }
-.dim-item-container.prio-medium:hover { background: rgba(96, 165, 250, 0.10); }
-.dim-item-container.prio-low:hover    { background: rgba(148, 163, 184, 0.08); }
-
-/* Weight percentage badge */
-.weight-badge {
-    display: inline-block;
-    min-width: 38px; text-align: center;
-    padding: 1px 6px; margin-left: 6px;
-    border-radius: 999px;
-    font-size: 9px; font-weight: 900; letter-spacing: 0.04em;
-    background: rgba(99, 102, 241, 0.12); color: #a5b4fc;
-    border: 1px solid rgba(99, 102, 241, 0.25);
+.tooltip-def {
+    font-size: 11px;
+    color: #cbd5e1;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 6px;
 }
-.dim-item-container.prio-core   .weight-badge { background: rgba(239, 68, 68, 0.15);  color: #fca5a5; border-color: rgba(239, 68, 68, 0.35); }
-.dim-item-container.prio-high   .weight-badge { background: rgba(251, 146, 60, 0.15); color: #fdba74; border-color: rgba(251, 146, 60, 0.35); }
-.dim-item-container.prio-medium .weight-badge { background: rgba(96, 165, 250, 0.15); color: #93c5fd; border-color: rgba(96, 165, 250, 0.35); }
-.dim-item-container.prio-low    .weight-badge { background: rgba(100, 116, 139, 0.15); color: #94a3b8; border-color: rgba(100, 116, 139, 0.35); }
-
-/* Priority dot */
-.priority-dot { flex-shrink: 0; }
-.hide-priorities .priority-dot,
-.hide-priorities .weight-badge,
-.hide-priorities .dim-item-container { border-left-color: transparent !important; background: transparent !important; }
-.hide-priorities .priority-dot,
-.hide-priorities .weight-badge { display: none !important; }
-
-/* Copy button feedback */
-.copy-btn.copied { background: #10b981 !important; color: #fff !important; }
-
-/* Toast */
-#toast.show { opacity: 1 !important; }
-
-/* Emphasis badge (Single Focus) */
-.emphasis-badge {
-    background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white;
-    font-weight: 900; padding: 2px 10px; border-radius: 999px;
-    font-size: 9px; letter-spacing: 0.08em;
+.tooltip-ex {
+    font-size: 10px;
+    color: #64748b;
+    font-weight: 500;
+    line-height: 1.5;
+    font-style: italic;
 }
 
-/* Fallback warning when renderer fails */
-.render-error {
-    padding: 16px; border: 1px dashed #ef4444; border-radius: 16px;
-    background: rgba(239, 68, 68, 0.08); color: #fca5a5;
-    font-size: 11px; font-weight: 600;
+/* ── A: Question button ── */
+.dim-q-btn {
+    flex-shrink: 0;
+}
+
+/* ── D: Strategy description text ── */
+.strategy-desc {
+    color: #4b5563;
+    line-height: 1.35;
+}
+.dark .strategy-desc {
+    color: #475569;
+}
+/* Highlight selected strategy card */
+.strategy-label:has(input:checked) {
+    border-color: rgba(99, 102, 241, 0.5) !important;
+    background: rgba(99, 102, 241, 0.06) !important;
+}
+.dark .strategy-label:has(input:checked) .strategy-desc {
+    color: #6366f1;
+}
+
+/* ── C: History section title brighter ── */
+#history-section h2 {
+    color: #cbd5e1;
+}
+
+/* ── C: Right panel summary grid values brighter ── */
+.result-card .text-slate-200 {
+    color: #e2e8f0;
 }
