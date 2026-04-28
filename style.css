@@ -22,6 +22,40 @@ body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
     border-color: #374151;
 }
 
+/* ── Recommended Card highlight ── */
+.recommended-card {
+    border-color: rgba(99, 102, 241, 0.4) !important;
+    box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.15), 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+}
+.recommended-card:hover {
+    border-color: rgba(99, 102, 241, 0.6) !important;
+    box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.3), 0 40px 80px -15px rgba(0, 0, 0, 0.6);
+}
+
+/* ── Recommended Badge ── */
+.rec-badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.35);
+}
+
+/* ── Recommended Reason Line ── */
+.rec-reason-line {
+    font-size: 10px;
+    color: #818cf8;
+    font-weight: 600;
+    line-height: 1.5;
+    opacity: 0.85;
+}
+
 /* C: Prompt text — larger, better line-height, brighter in dark mode */
 .prompt-text {
     font-size: 15px;
